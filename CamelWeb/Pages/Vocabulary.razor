@@ -1,94 +1,56 @@
 @page "/vocabulary"
 
-<h2 style="color:#512BD4;">Словник 📚</h2>
+<div class="container mt-4">
+    <div class="text-center mb-5 p-4" style="background: #512BD4; color: white; border-radius: 25px; shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <h1 class="fw-bold">Мій Словник 🐫📚</h1>
+        <p class="mb-0">Зараз я вивчаю: <span class="badge bg-warning text-dark fs-5">@selectedLanguage</span></p>
+    </div>
 
-<button @onclick="OpenModal">Додати слово</button>
+    @* Кнопки вибору мови *@
+    <div class="d-flex justify-content-center gap-3 mb-5">
+        <button class="btn btn-outline-primary fw-bold" @onclick='() => SelectLanguage("English 🇬🇧")'>English</button>
+        <button class="btn btn-outline-danger fw-bold" @onclick='() => SelectLanguage("Turkish 🇹🇷")'>Turkish</button>
+        <button class="btn btn-outline-info fw-bold" @onclick='() => SelectLanguage("Icelandic 🇮🇸")'>Icelandic</button>
+    </div>
 
-@if (ShowModal)
-{
-    <div style="background:rgba(0,0,0,0.5); padding:20px; margin-top:20px;">
-        <div style="background:white; padding:20px; border-radius:10px;">
-
-            <h4>Нове слово</h4>
-
-            <input placeholder="English" @bind="NewWord.English" /><br /><br />
-            <input placeholder="Ukrainian" @bind="NewWord.Ukrainian" /><br /><br />
-            <input placeholder="Transcription" @bind="NewWord.Transcription" /><br /><br />
-            <input placeholder="Image URL" @bind="NewWord.ImageUrl" /><br /><br />
-
-            <button @onclick="SaveWord">Зберегти</button>
-            <button @onclick="CloseModal">Скасувати</button>
-
+    @* Таблиця зі словами *@
+    <div class="card shadow-sm border-0" style="border-radius: 20px;">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="p-3">Слово</th>
+                        <th class="p-3">Переклад</th>
+                        <th class="p-3">Приклад</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (selectedLanguage.Contains("English"))
+                    {
+                        <tr><td class="p-3"><b>Ambition</b></td><td>Амбіція</td><td>I have a big ambition. 🐫</td></tr>
+                        <tr><td class="p-3"><b>Developer</b></td><td>Розробник</td><td>Ruslana is a software developer.</td></tr>
+                    }
+                    else if (selectedLanguage.Contains("Turkish"))
+                    {
+                        <tr><td class="p-3"><b>Merhaba</b></td><td>Привіт</td><td>Merhaba, nasılsın?</td></tr>
+                        <tr><td class="p-3"><b>Arkadaş</b></td><td>Друг</td><td>O benim en iyi arkadaşım.</td></tr>
+                    }
+                    else
+                    {
+                        <tr><td class="p-3"><b>Eldfjall</b></td><td>Вулкан</td><td>Ísland er land eldfjalla.</td></tr>
+                        <tr><td class="p-3"><b>Tölva</b></td><td>Комп'ютер</td><td>Ég elska nýju tölvuna mína.</td></tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-}
-
-<hr />
-
-@foreach (var word in MyWords)
-{
-    <div style="border:1px solid gray; padding:10px; margin:10px 0;"
-        @onclick=" () => Toggle(word)">
-
-        @if (!word.IsFlipped)
-        {
-            <b>@word.English</b>
-        }
-        else
-        {
-            <div>
-                <b>@word.Ukrainian</b><br />
-                <small>@word.Transcription</small>
-            </div>
-        }
-    </div>
-}
+</div>
 
 @code {
-    bool ShowModal = false;
+    private string selectedLanguage = "English 🇬🇧";
 
-    List<WordModel> MyWords = new();
-
-    WordModel NewWord = new();
-
-    void OpenModal()
+    private void SelectLanguage(string lang)
     {
-        ShowModal = true;
-    }
-
-    void CloseModal()
-    {
-        ShowModal = false;
-        NewWord = new WordModel();
-    }
-
-    void SaveWord()
-    {
-        if (!string.IsNullOrWhiteSpace(NewWord.English))
-        {
-            MyWords.Add(new WordModel
-            {
-                English = NewWord.English,
-                Ukrainian = NewWord.Ukrainian,
-                Transcription = NewWord.Transcription,
-                ImageUrl = NewWord.ImageUrl
-            });
-
-            CloseModal();
-        }
-    }
-
-    void Toggle(WordModel word)
-    {
-        word.IsFlipped = !word.IsFlipped;
-    }
-
-    class WordModel
-    {
-        public string English { get; set; } = "";
-        public string Ukrainian { get; set; } = "";
-        public string Transcription { get; set; } = "";
-        public string ImageUrl { get; set; } = "";
-        public bool IsFlipped { get; set; }
+        selectedLanguage = lang;
     }
 }
