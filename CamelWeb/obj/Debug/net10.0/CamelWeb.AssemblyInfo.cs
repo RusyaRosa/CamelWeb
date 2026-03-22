@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CamelWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f873417d0eef9303dea598c63726ff73b32a740")]
 [assembly: System.Reflection.AssemblyProductAttribute("CamelWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CamelWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
