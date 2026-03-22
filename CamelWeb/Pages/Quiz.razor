@@ -1,0 +1,40 @@
+@page "/quiz"
+@using System.Collections.Generic
+
+@code {
+    public class Question {
+        public string Text { get; set; } = ""; // Напр. "I ___ English every day."
+        public List<string> Options { get; set; } = new(); // ["study", "studying", "studies"]
+        public int CorrectIndex { get; set; }
+        public int Level { get; set; } // 1, 2 or 3 (виправлено: видалено 'або')
+    }
+
+    private List<Question> AllQuestions = new List<Question>
+    {
+        new Question {
+            Text = "I ___ to the gym yesterday.",
+            Options = new List<string> { "go", "went", "gone" },
+            CorrectIndex = 1,
+            Level = 1
+        },
+        new Question {
+            Text = "She ___ her breakfast right now.",
+            Options = new List<string> { "is eating", "eats", "ate" },
+            CorrectIndex = 0,
+            Level = 1
+        }
+    };
+
+    // Тут буде логіка твого тесту (підрахунок балів, показ верблюда тощо)
+}
+
+<div class="container mt-4 text-center">
+    <h2 style="color: #512BD4;">Перевірка знань 🐪</h2>
+    <p class="text-muted">Давай дізнаємось, наскільки добре ти знаєш граматику!</p>
+    
+    <div class="alert alert-info">
+        Тут скоро з'являться твої 30 запитань. Натисни "Старт", щоб почати!
+    </div>
+    
+    <button class="btn btn-primary btn-lg" style="border-radius: 50px; padding: 10px 40px;">Старт</button>
+</div>

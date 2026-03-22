@@ -1,0 +1,45 @@
+﻿@page "/progress"
+
+<div class="container mt-4 text-center">
+    <h2 style="color: #512BD4; font-weight: bold;">Статистика Camel 📈</h2>
+    <hr />
+
+    <div style="display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap;">
+        
+        @* Картка 1 *@
+        <div style="background: #f3f0ff; padding: 20px; border-radius: 20px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 style="color: #512BD4;">English</h4>
+            <p style="font-size: 30px; font-weight: bold;">B1+</p>
+            <span>Прогрес: 65%</span>
+        </div>
+
+        @* Картка 2 *@
+        <div style="background: #fff9db; padding: 20px; border-radius: 20px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 style="color: #f59f00;">Словник</h4>
+            <p style="font-size: 30px; font-weight: bold;">@MyWordsCount</p>
+            <span>слів додано</span>
+        </div>
+
+        @* Картка 3 *@
+        <div style="background: #e7f5ff; padding: 20px; border-radius: 20px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 style="color: #1c7ed6;">Мови</h4>
+            <p style="font-size: 20px;">🇹🇷 TR | 🇪🇸 ES | 🇮🇸 IS</p>
+            <span>В процесі...</span>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 25px;">
+        <h4>Загальний прогрес навчання 🐫</h4>
+        <div style="background: #ddd; border-radius: 20px; height: 30px; width: 100%; margin-top: 15px; overflow: hidden;">
+            <div style="background: #28a745; width: 45%; height: 100%; text-align: center; color: white; line-height: 30px;">
+                45%
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    // Тимчасово поставимо цифру вручну, щоб не було помилок
+    int MyWordsCount = 15;
+}

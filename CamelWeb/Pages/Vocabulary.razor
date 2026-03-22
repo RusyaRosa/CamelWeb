@@ -1,0 +1,94 @@
+@page "/vocabulary"
+
+<h2 style="color:#512BD4;">Словник 📚</h2>
+
+<button @onclick="OpenModal">Додати слово</button>
+
+@if (ShowModal)
+{
+    <div style="background:rgba(0,0,0,0.5); padding:20px; margin-top:20px;">
+        <div style="background:white; padding:20px; border-radius:10px;">
+
+            <h4>Нове слово</h4>
+
+            <input placeholder="English" @bind="NewWord.English" /><br /><br />
+            <input placeholder="Ukrainian" @bind="NewWord.Ukrainian" /><br /><br />
+            <input placeholder="Transcription" @bind="NewWord.Transcription" /><br /><br />
+            <input placeholder="Image URL" @bind="NewWord.ImageUrl" /><br /><br />
+
+            <button @onclick="SaveWord">Зберегти</button>
+            <button @onclick="CloseModal">Скасувати</button>
+
+        </div>
+    </div>
+}
+
+<hr />
+
+@foreach (var word in MyWords)
+{
+    <div style="border:1px solid gray; padding:10px; margin:10px 0;"
+        @onclick=" () => Toggle(word)">
+
+        @if (!word.IsFlipped)
+        {
+            <b>@word.English</b>
+        }
+        else
+        {
+            <div>
+                <b>@word.Ukrainian</b><br />
+                <small>@word.Transcription</small>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    bool ShowModal = false;
+
+    List<WordModel> MyWords = new();
+
+    WordModel NewWord = new();
+
+    void OpenModal()
+    {
+        ShowModal = true;
+    }
+
+    void CloseModal()
+    {
+        ShowModal = false;
+        NewWord = new WordModel();
+    }
+
+    void SaveWord()
+    {
+        if (!string.IsNullOrWhiteSpace(NewWord.English))
+        {
+            MyWords.Add(new WordModel
+            {
+                English = NewWord.English,
+                Ukrainian = NewWord.Ukrainian,
+                Transcription = NewWord.Transcription,
+                ImageUrl = NewWord.ImageUrl
+            });
+
+            CloseModal();
+        }
+    }
+
+    void Toggle(WordModel word)
+    {
+        word.IsFlipped = !word.IsFlipped;
+    }
+
+    class WordModel
+    {
+        public string English { get; set; } = "";
+        public string Ukrainian { get; set; } = "";
+        public string Transcription { get; set; } = "";
+        public string ImageUrl { get; set; } = "";
+        public bool IsFlipped { get; set; }
+    }
+}

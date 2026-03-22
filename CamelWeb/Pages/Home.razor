@@ -1,0 +1,37 @@
+﻿@page "/"
+
+<div class="container text-center mt-5">
+    @* Великий банер з вітанням *@
+    <div class="main-banner p-5 mb-4" style="background: linear-gradient(135deg, #512BD4, #673AB7); border-radius: 30px; color: white; box-shadow: 0 10px 20px rgba(81, 43, 212, 0.2);">
+        <h1 style="font-size: 3.5rem; font-weight: bold;">Привіт, Руслано! 🐫</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">Вітаємо у твоєму особистому просторі для вивчення мов.</p>
+        <hr style="width: 50px; margin: 20px auto; border-top: 3px solid white; border-radius: 10px;" />
+        <h5 style="font-style: italic;">"Крок за кроком верблюд долає пустелю..."</h5>
+    </div>
+
+    <div class="row mt-5">
+        @* Картка: Словник *@
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-0" style="border-radius: 20px;">
+                <div class="card-body p-4 text-center">
+                    <div style="font-size: 3rem;">🍎</div>
+                    <h3 class="fw-bold" style="color: #512BD4;">Мій Словник</h3>
+                    <p class="text-muted">Тут твої слова з англійської, турецької та ісландської.</p>
+                    <a href="vocabulary" class="btn btn-primary px-4" style="border-radius: 10px; background: #512BD4;">Відкрити</a>
+                </div>
+            </div>
+        </div>
+
+        @* Картка: Граматика *@
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-0" style="border-radius: 20px;">
+                <div class="card-body p-4 text-center">
+                    <div style="font-size: 3rem;">📚</div>
+                    <h3 class="fw-bold" style="color: #512BD4;">Граматика</h3>
+                    <p class="text-muted">Вивчай 12 часів англійської мови з верблюдом-помічником.</p>
+                    <a href="grammar" class="btn btn-outline-primary px-4" style="border-radius: 10px; color: #512BD4; border-color: #512BD4;">Вчити правила</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

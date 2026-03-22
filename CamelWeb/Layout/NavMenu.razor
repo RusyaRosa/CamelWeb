@@ -1,0 +1,48 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">CamelWeb 🐫</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').checked = false">
+    <nav class="flex-column">
+        
+        @* Головна сторінка *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Дім
+            </NavLink>
+        </div>
+
+        @* Новий розділ статистики замість лічильника *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="progress">
+                <span class="bi bi-graph-up-arrow-nav-menu" aria-hidden="true"></span> Прогрес 📈
+            </NavLink>
+        </div>
+
+        <hr class="text-white opacity-25 mx-3" />
+
+        @* Навчальні розділи *@
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="grammar">
+                <span class="bi bi-journal-text-nav-menu" aria-hidden="true"></span> Граматика 📚
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="quiz">
+                <span class="bi bi-list-check-nav-menu" aria-hidden="true"></span> Тести 🐪
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="vocabulary">
+                <span class="bi bi-book-nav-menu" aria-hidden="true"></span> Словник 🍎
+            </NavLink>
+        </div>
+
+    </nav>
+</div>
